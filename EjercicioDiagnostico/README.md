@@ -18,7 +18,7 @@ Desarrollo de una aplicación que permite dibujar figuras geométricas básicas 
     - La longitud del lado del triángulo equilátero.
     - El radio de la circunferencia.
 3. El sistema dibuja la figura seleccionada en el "tablero", de acuerdo a los valores ingresados en el formulario.
-4. El sistema calcula de manera automática el valor del área y perímetro de la figura seleccionada.
+4. El sistema calcula de manera automática el valor del perímetro y área de la figura seleccionada.
 
 ## Vista previa
-[Abrir aplicación](https://cesargomez05.github.io/EjercicioDiagnostico/).
+[Abrir aplicación](https://cesargomez05.github.io/EjercicioDiagnostico/)

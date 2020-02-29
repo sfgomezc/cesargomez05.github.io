@@ -4,7 +4,7 @@
 
 * Laura Alejandra Campos - 20201099028
 * Steven Gómez - 20201099030
-* Edna Palma - 20201099041
+* Edna Nayibe Palma - 20201099041
 * César Augusto Gómez - 20201099031
 
 ## Objetivo de la solución

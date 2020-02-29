@@ -21,34 +21,73 @@ $(document).ready(function () {
   });
 
   window.calcularYDibujar = function (figura) {
-    switch (figura) {
-      case "cuadrado":
-        var longitud = $("#txtLadoC").val();
-        dibujarCuadrado(longitud);
-        $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroCuadrado(longitud)));
-        $("#txtArea").html(getMilesNumberFormat(calcularAreaCuadrado(longitud)));
-        break;
-      case "circulo":
-        var radio = $("#txtRadio").val();
-        dibujarCirculo(radio);
-        $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroCircunferencia(radio)));
-        $("#txtArea").html(getMilesNumberFormat(calcularAreaCircunferencia(radio)));
-        break;
-      case "rectangulo":
-        var largo = $("#txtLargoR").val();
-        var alto = $("#txtAltoR").val();
-        dibujarRectangulo(largo, alto);
-        $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroRectangulo(largo, alto)));
-        $("#txtArea").html(getMilesNumberFormat(calcularAreaRectangulo(largo, alto)));
-        break;
-      case "triangulo":
-        var longitud = $("#txtLadoT").val();
-        dibujarTriangulo(longitud);
-        $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroTriangulo(longitud)));
-        $("#txtArea").html(getMilesNumberFormat(calcularAreaTriangulo(longitud)));
-        break;
-    }
+    try {
+      //canvas.width, canvas.height
+      switch (figura) {
+        case "cuadrado":
+          var longitud = $("#txtLadoC").val();
 
+          if (!longitud) {
+            throw "Favor ingresa la longitud del cuadrado";
+          }
+          if (longitud >= canvas.width || longitud >= canvas.height) {
+            throw "El valor de la longitud del cuadrado no debe ser superior al tamaño del CANVAS";
+          }
+
+          dibujarCuadrado(longitud);
+          $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroCuadrado(longitud)));
+          $("#txtArea").html(getMilesNumberFormat(calcularAreaCuadrado(longitud)));
+          break;
+        case "circulo":
+          var radio = $("#txtRadio").val();
+          if (!radio) {
+            throw "Favor ingresa el radio de la circunferencia";
+          }
+          if (radio * 2 >= canvas.width || radio * 2 >= canvas.height) {
+            throw "El valor del radio de la circunferencia no debe ser superior al tamaño del CANVAS";
+          }
+
+          dibujarCirculo(radio);
+          $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroCircunferencia(radio)));
+          $("#txtArea").html(getMilesNumberFormat(calcularAreaCircunferencia(radio)));
+          break;
+        case "rectangulo":
+          var largo = $("#txtLargoR").val();
+          var alto = $("#txtAltoR").val();
+
+          if (!largo || !alto) {
+            throw "Favor ingresa el valor del alto y largo del rectángulo";
+          }
+
+          if (largo >= canvas.width || largo >= canvas.height) {
+            throw "El valor del largo del rectángulo no debe ser superior al tamaño del CANVAS";
+          }
+          if (alto >= canvas.width || alto>= canvas.height) {
+            throw "El valor del alto del rectángulo no debe ser superior al tamaño del CANVAS";
+          }
+
+          dibujarRectangulo(largo, alto);
+          $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroRectangulo(largo, alto)));
+          $("#txtArea").html(getMilesNumberFormat(calcularAreaRectangulo(largo, alto)));
+          break;
+        case "triangulo":
+          var longitud = $("#txtLadoT").val();
+
+          if (!longitud) {
+            throw "Favor ingresa la longitud del triángulo";
+          }
+          if (longitud >= canvas.width || longitud >= canvas.height) {
+            throw "El valor de la longitud del triángulo no debe ser superior al tamaño del CANVAS";
+          }
+
+          dibujarTriangulo(longitud);
+          $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroTriangulo(longitud)));
+          $("#txtArea").html(getMilesNumberFormat(calcularAreaTriangulo(longitud)));
+          break;
+      }
+    } catch (ex) {
+      alert(ex);
+    }
     return false;
   };
 

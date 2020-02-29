@@ -195,7 +195,11 @@ $(document).ready(function () {
     return base * altura;
   }
 
-  function getMilesNumberFormat(number) {
+  function getMilesNumberFormat(number, decimals) {
+    if (typeof decimals == "undefined") {
+      decimals = 2;
+    }
+
     // convertimos en texto el vakir ubfgr
     number = number.toString();
 
@@ -210,7 +214,7 @@ $(document).ready(function () {
     match = number.match(/^(-?)(\d+\.\d+)$/);
     if (match) {
       var array = match[2].split(".");
-      return match[1] + String(array[0]).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "," + String(array[1]);
+      return match[1] + String(array[0]).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "," + String(array[1]).slice(0, decimals);
     }
   }
 });

@@ -12,8 +12,6 @@ $(document).ready(function () {
   });
 
   window.calcularYDibujar = function (figura) {
-    var perimetro, area;
-    
     switch (figura) {
       case "cuadrado":
         var longitud = $("#txtLadoC").val();
@@ -60,20 +58,22 @@ $(document).ready(function () {
   function dibujarCirculo(radio) {
     // Se elimina los dibujos realizados en el CANVAS
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    /*
     ctx.save();
     ctx.beginPath();
-    ctx.arc(100, 100, radio, 0, 2 * Math.PI);
+
+    // Se obtiene el punto X y Y, de tal manera que permita que la figura quede dibujada en el centro
+    var x = (canvas.width) / 2;
+    var y = (canvas.height) / 2;
+
+    ctx.arc(x, y, radio, 0, 2 * Math.PI);
     ctx.restore();
     ctx.stroke();
-    */
   }
 
   function dibujarTriangulo(longitud) {
     // Se elimina los dibujos realizados en el CANVAS
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    /*
     var h = longitud * (Math.sqrt(3) / 2);
 
     ctx.save();
@@ -86,7 +86,7 @@ $(document).ready(function () {
     ctx.lineTo(longitud / 2, h / 2);
     ctx.lineTo(0, -h / 2);
     ctx.restore();
-    ctx.stroke();*/
+    ctx.stroke();
   }
 
   function dibujarRectangulo(ancho, alto) {

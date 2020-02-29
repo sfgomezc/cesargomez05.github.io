@@ -6,6 +6,15 @@ $(document).ready(function () {
     $("#panelInformacion").hide();
     $("#panelFormularios").show();
 
+    // Se elimina los dibujos realizados en el CANVAS
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    $("#panelFormularios form").each(function(index, form) {
+      // Se resetea los formularios
+      form.reset();
+    });
+    $("#txtPerimetro").add($("#txtArea")).html("<i>Sin calcular</i>")
+
     var target = $(e.target).attr("href");
     target = target.replace(/#/, "");
     figuraSelect = target;

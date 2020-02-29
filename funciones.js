@@ -47,11 +47,19 @@ $(document).ready(function () {
     return false;
   };
   function dibujarCuadrado(longitud) {
+    // Se elimina los dibujos realizados en el CANVAS
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillRect(25, 25, longitud, longitud);
+
+    // Se obtiene el punto X y Y, de tal manera que permita que la figura quede dibujada en el centro
+    var x = (canvas.width - longitud) / 2;
+    var y = (canvas.height - longitud) / 2;
+
+    // Se dibuja el cuadrado en el canvas
+    ctx.fillRect(x, y, longitud, longitud);
   }
 
   function dibujarCirculo(radio) {
+    // Se elimina los dibujos realizados en el CANVAS
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.beginPath();
@@ -61,6 +69,7 @@ $(document).ready(function () {
   }
 
   function dibujarTriangulo(longitud) {
+    // Se elimina los dibujos realizados en el CANVAS
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     var h = longitud * (Math.sqrt(3) / 2);
@@ -76,12 +85,17 @@ $(document).ready(function () {
     ctx.lineTo(0, -h / 2);
     ctx.restore();
     ctx.stroke();
-
   }
 
   function dibujarRectangulo(ancho, alto) {
+    // Se elimina los dibujos realizados en el CANVAS
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillRect(30, 25, ancho, alto);
+
+    // Se obtiene el punto X y Y, de tal manera que permita que la figura quede dibujada en el centro
+    var x = (canvas.width - ancho) / 2;
+    var y = (canvas.height - alto) / 2;
+
+    ctx.fillRect(x, y, ancho, alto);
   }
 
   /**

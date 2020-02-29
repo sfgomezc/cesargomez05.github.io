@@ -12,33 +12,36 @@ $(document).ready(function () {
   });
 
   window.calcularYDibujar = function (figura) {
+    var perimetro, area;
+    
     switch (figura) {
       case "cuadrado":
         var longitud = $("#txtLadoC").val();
         dibujarCuadrado(longitud);
-        $("#Area").html(calcularAreaCuadrado(longitud));
-        $("#Perímetro").html(calcularPerimetroCuadrado(longitud));
+        $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroCuadrado(longitud)));
+        $("#txtArea").html(getMilesNumberFormat(calcularAreaCuadrado(longitud)));
         break;
       case "circulo":
         var radio = $("#txtRadio").val();
         dibujarCirculo(radio);
-        $("#Area").html(calcularAreaCircunferencia(radio));
-        $("#Perímetro").html(calcularPerimetroCircunferencia(radio));
+        $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroCircunferencia(radio)));
+        $("#txtArea").html(getMilesNumberFormat(calcularAreaCircunferencia(radio)));
         break;
       case "rectangulo":
         var largo = $("#txtLargoR").val();
         var alto = $("#txtAltoR").val();
         dibujarRectangulo(largo, alto);
-        $("#Area").html(calcularAreaRectangulo(largo, alto));
-        $("#Perímetro").html(calcularPerimetroRectangulo(largo, alto));
+        $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroRectangulo(largo, alto)));
+        $("#txtArea").html(getMilesNumberFormat(calcularAreaRectangulo(largo, alto)));
         break;
       case "triangulo":
         var longitud = $("#txtLadoT").val();
         dibujarTriangulo(longitud);
-        $("#Area").html(calcularAreaTriangulo(longitud));
-        $("#Perímetro").html(calcularPerimetroTriangulo(longitud));
+        $("#txtPerimetro").html(getMilesNumberFormat(calcularPerimetroTriangulo(longitud)));
+        $("#txtArea").html(getMilesNumberFormat(calcularAreaTriangulo(longitud)));
         break;
     }
+
     return false;
   };
 
@@ -57,17 +60,20 @@ $(document).ready(function () {
   function dibujarCirculo(radio) {
     // Se elimina los dibujos realizados en el CANVAS
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    /*
     ctx.save();
     ctx.beginPath();
     ctx.arc(100, 100, radio, 0, 2 * Math.PI);
     ctx.restore();
     ctx.stroke();
+    */
   }
 
   function dibujarTriangulo(longitud) {
     // Se elimina los dibujos realizados en el CANVAS
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    /*
     var h = longitud * (Math.sqrt(3) / 2);
 
     ctx.save();
@@ -80,7 +86,7 @@ $(document).ready(function () {
     ctx.lineTo(longitud / 2, h / 2);
     ctx.lineTo(0, -h / 2);
     ctx.restore();
-    ctx.stroke();
+    ctx.stroke();*/
   }
 
   function dibujarRectangulo(ancho, alto) {
@@ -175,5 +181,24 @@ $(document).ready(function () {
    */
   function calcularAreaRectangulo(base, altura) {
     return base * altura;
+  }
+
+  function getMilesNumberFormat(number) {
+    // convertimos en texto el vakir ubfgr
+    number = number.toString();
+
+    // Se invoca la función que valida si el valor es un número entero positivo o negativo
+    var match = number.match(/^(-?)(\d+)$/);
+    if (match) {
+      // Se retorna el valor del signo junto con el respectivo número separado por miles
+      return match[1] + String(match[2]).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    // Se invoca la función que valida si el valor es un numero decimal positivo o negativo
+    match = number.match(/^(-?)(\d+\.\d+)$/);
+    if (match) {
+      var array = match[2].split(".");
+      return match[1] + String(array[0]).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "," + String(array[1]);
+    }
   }
 });

@@ -77,7 +77,10 @@ $(document).ready(function () {
     var h = longitud * (Math.sqrt(3) / 2);
 
     ctx.save();
-    ctx.translate(100, 100);
+    // Se obtiene el punto X y Y, de tal manera que permita que la figura quede dibujada en el centro
+    var x = (canvas.width) / 2;
+    var y = (canvas.height) / 2;
+    ctx.translate(x, y);
 
     ctx.beginPath();
 

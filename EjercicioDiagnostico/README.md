@@ -1,4 +1,4 @@
-# Informática 1
+# Ejercicio diagnóstico
 
 ## Integrantes
 

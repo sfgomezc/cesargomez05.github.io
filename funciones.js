@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  var figuraSelect;
-
   var canvas = document.getElementById('dibujo');
   var ctx = canvas.getContext('2d');
 
@@ -13,9 +11,6 @@ $(document).ready(function () {
     figuraSelect = target;
   });
 
-  $("#botonCalcular").click(function () {
-    console.log(figuraSelect);
-  });
   window.calcularYDibujar = function (figura) {
     switch (figura) {
       case "cuadrado":
@@ -46,6 +41,7 @@ $(document).ready(function () {
     }
     return false;
   };
+
   function dibujarCuadrado(longitud) {
     // Se elimina los dibujos realizados en el CANVAS
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -99,11 +95,11 @@ $(document).ready(function () {
   }
 
   /**
- * Función que calcula el perímetro del cuadrado.
- * El perímetro se halla multiplicando la longitud de uno de sus lados por 4.
- * @param {Number} longitud Longitud del cuadrado.
- * @return {Number} Perímetro del cuadrado.
- */
+   * Función que calcula el perímetro del cuadrado.
+   * El perímetro se halla multiplicando la longitud de uno de sus lados por 4.
+   * @param {Number} longitud Longitud del cuadrado.
+   * @return {Number} Perímetro del cuadrado.
+   */
   function calcularPerimetroCuadrado(longitud) {
     return longitud * 4;
   }

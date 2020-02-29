@@ -30,6 +30,9 @@ $(document).ready(function () {
           if (!longitud) {
             throw "Favor ingresa la longitud del cuadrado";
           }
+          if (longitud <= 0) {
+            throw "El valor de la longitud del cuadrado debe ser mayor a cero";
+          }
           if (longitud >= canvas.width || longitud >= canvas.height) {
             throw "El valor de la longitud del cuadrado no debe ser superior al tamaño del CANVAS";
           }
@@ -42,6 +45,9 @@ $(document).ready(function () {
           var radio = $("#txtRadio").val();
           if (!radio) {
             throw "Favor ingresa el radio de la circunferencia";
+          }
+          if (radio <= 0) {
+            throw "El valor del radio de la circunferencia debe ser mayor a cero";
           }
           if (radio * 2 >= canvas.width || radio * 2 >= canvas.height) {
             throw "El valor del radio de la circunferencia no debe ser superior al tamaño del CANVAS";
@@ -57,6 +63,12 @@ $(document).ready(function () {
 
           if (!largo || !alto) {
             throw "Favor ingresa el valor del alto y largo del rectángulo";
+          }
+          if (largo <= 0) {
+            throw "El valor del largo del rectángulo debe ser mayor a cero";
+          }
+          if (alto <= 0) {
+            throw "El valor del alto del rectángulo debe ser mayor a cero";
           }
 
           if (largo >= canvas.width || largo >= canvas.height) {
@@ -75,6 +87,9 @@ $(document).ready(function () {
 
           if (!longitud) {
             throw "Favor ingresa la longitud del triángulo";
+          }
+          if (longitud <= 0) {
+            throw "El valor de la longitud del triángulo debe ser mayor a cero";
           }
           if (longitud >= canvas.width || longitud >= canvas.height) {
             throw "El valor de la longitud del triángulo no debe ser superior al tamaño del CANVAS";

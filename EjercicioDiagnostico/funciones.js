@@ -115,6 +115,7 @@ $(document).ready(function () {
     var y = (canvas.height - longitud) / 2;
 
     // Se dibuja el cuadrado en el canvas
+    ctx.fillStyle = "blue";
     ctx.fillRect(x, y, longitud, longitud);
   }
 
@@ -128,8 +129,10 @@ $(document).ready(function () {
     var x = (canvas.width) / 2;
     var y = (canvas.height) / 2;
 
+    ctx.fillStyle = "red";
     ctx.arc(x, y, radio, 0, 2 * Math.PI);
-    ctx.restore();
+    //ctx.restore();
+    ctx.fill();
     ctx.stroke();
   }
 
@@ -151,7 +154,9 @@ $(document).ready(function () {
     ctx.lineTo(-longitud / 2, h / 2);
     ctx.lineTo(longitud / 2, h / 2);
     ctx.lineTo(0, -h / 2);
-    ctx.restore();
+    //ctx.restore();
+    ctx.fillStyle = "purple";
+    ctx.fill();
     ctx.stroke();
   }
 

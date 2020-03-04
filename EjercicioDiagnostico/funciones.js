@@ -154,7 +154,7 @@ $(document).ready(function () {
     ctx.lineTo(-longitud / 2, h / 2);
     ctx.lineTo(longitud / 2, h / 2);
     ctx.lineTo(0, -h / 2);
-    //ctx.restore();
+    ctx.restore();
     ctx.fillStyle = "purple";
     ctx.fill();
     ctx.stroke();
